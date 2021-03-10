@@ -1,4 +1,3 @@
-import 'package:client/src/no_contacts.dart';
 import 'package:client/src/contacts_screen.dart';
 import 'package:flutter/material.dart';
 

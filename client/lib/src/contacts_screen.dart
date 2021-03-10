@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
 import 'package:client/src/list_contacts.dart';
+import 'package:client/src/api.dart';
 
 class ContactsScreen extends StatefulWidget {
   ContactsScreen({Key key, this.title}) : super(key: key);
 
   final String title;
+  final ContactsApi api = ContactsApi();
 
   @override
   _ContactsScreenState createState() => _ContactsScreenState();
@@ -13,6 +15,19 @@ class ContactsScreen extends StatefulWidget {
 
 class _ContactsScreenState extends State<ContactsScreen> {
   List contacts = [];
+  bool loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    widget.api.getContacts().then((data) {
+      setState(() {
+        contacts = data;
+        loading = false;
+      });
+    });
+  }
 
   void _addContact() {
     setState(() {
@@ -36,7 +51,10 @@ class _ContactsScreenState extends State<ContactsScreen> {
         title: Text(widget.title),
         centerTitle: true,
       ),
-      body: ListContacts(contacts: contacts, add: _addContact, delete: _deleteContact),
+      body: loading
+          ? Center(child: CircularProgressIndicator())
+          : ListContacts(
+              contacts: contacts, add: _addContact, delete: _deleteContact),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
