@@ -1,7 +1,14 @@
 import 'package:client/src/contacts_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:client/src/server.dart' as server;
+import 'dart:io';
 
-void main() {
+void main() async {
+
+  // Set the return type to Future<void>
+  // Then use it to stop the flow until the server accepts the connection.
+  await server.start();
+
   runApp(MyApp());
 }
 

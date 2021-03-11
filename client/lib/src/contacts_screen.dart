@@ -20,7 +20,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
   // Understand this part better.
   @override
   void initState() {
-
+    
     widget.api.getContacts().then((data) {
       setState(() {
         contacts = data;

@@ -1,7 +1,7 @@
 import 'package:mongo_dart/mongo_dart.dart';
 import 'package:sevr/sevr.dart';
 
-void start() async {
+Future<void> start() async {
   // Log into database
   final db = await Db.create(
       'mongodb+srv://saksham:saksham@cluster0.ayj3r.mongodb.net/contactsapp?retryWrites=true&w=majority');
