@@ -27,7 +27,7 @@ class ListContacts extends StatelessWidget {
                           contact['name'],
                           style: TextStyle(fontSize: 20),
                         ),
-                        trailing: FlatButton(
+                        trailing: TextButton(
                           child: Icon(Icons.delete, size: 30),
                           onPressed: () {
                             delete(contact['name']);

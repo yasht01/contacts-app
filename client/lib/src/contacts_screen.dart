@@ -17,9 +17,9 @@ class _ContactsScreenState extends State<ContactsScreen> {
   List contacts = [];
   bool loading = true;
 
+  // Understand this part better.
   @override
   void initState() {
-    super.initState();
 
     widget.api.getContacts().then((data) {
       setState(() {
@@ -27,6 +27,8 @@ class _ContactsScreenState extends State<ContactsScreen> {
         loading = false;
       });
     });
+
+    super.initState();
   }
 
   void _addContact() {

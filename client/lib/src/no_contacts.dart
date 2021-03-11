@@ -21,7 +21,7 @@ class NoContacts extends StatelessWidget {
                 fontSize: 30,
               )),
           SizedBox(height: 20),
-          FlatButton(
+          TextButton(
               onPressed: add,
               child: Text(
                 'Add a contact',
