@@ -1,21 +1,21 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'contact.dart';
 
 class ContactsApi {
   final String url = 'http://localhost:4049';
 
-  Future<List> getContacts() async {
-    // await Future<void>.delayed(Duration(seconds: 5));
-    var response;
-
-    try {
-      response = await http.get(Uri.http("localhost:4049", "/"));
-    } on Exception catch (e) {
-      print("Error found at line 13 \"await http.get()\"");
-      print('Error: $e');
-    }
-
+  Future<List<Contact>> getContacts() async {
+    var response = await http.get(Uri.http("localhost:4049", ""));
     final jsonData = await jsonDecode(response.body.toString());
-    return (jsonData['contacts']);
+
+    return (jsonData['contacts'] as List)
+        .map<Contact>((json) => Contact.fromJson(json))
+        .toList();
+  }
+
+  Future<Contact> create(String name) async {
+    final response = await http.post(Uri.http("localhost:4049", "register"), body: {'name': name});
+    return Contact.fromJson(jsonDecode(response.body.toString()));
   }
 }

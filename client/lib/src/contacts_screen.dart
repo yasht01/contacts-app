@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
 import 'package:client/src/list_contacts.dart';
 import 'package:client/src/api.dart';
+import 'contact.dart';
 
 class ContactsScreen extends StatefulWidget {
   ContactsScreen({Key key, this.title}) : super(key: key);
@@ -14,13 +15,12 @@ class ContactsScreen extends StatefulWidget {
 }
 
 class _ContactsScreenState extends State<ContactsScreen> {
-  List contacts = [];
+  List<Contact> contacts = [];
   bool loading = true;
 
   // Understand this part better.
   @override
   void initState() {
-    
     widget.api.getContacts().then((data) {
       setState(() {
         contacts = data;
@@ -31,18 +31,21 @@ class _ContactsScreenState extends State<ContactsScreen> {
     super.initState();
   }
 
-  void _addContact() {
+  void _addContact() async {
+    final fakerObject = new Faker();
+    final person = fakerObject.person;
+    final fullName = '${person.firstName()} ${person.lastName()}';
+
+    final newContact = await widget.api.create(fullName);
+
     setState(() {
-      final fakerObject = new Faker();
-      final person = fakerObject.person;
-      final fullName = '${person.firstName()} ${person.lastName()}';
-      contacts.add({'name': fullName});
+      contacts.add(newContact);
     });
   }
 
-  void _deleteContact(String name) {
+  void _deleteContact(String id) {
     setState(() {
-      contacts.removeWhere((contact) => contact['name'] == name);
+      contacts.removeWhere((contact) => contact.id == id);
     });
   }
 

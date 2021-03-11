@@ -1,7 +1,6 @@
 import 'package:client/src/contacts_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:client/src/server.dart' as server;
-import 'dart:io';
 
 void main() async {
 
