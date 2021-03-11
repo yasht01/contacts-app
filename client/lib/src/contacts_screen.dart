@@ -62,20 +62,12 @@ class _ContactsScreenState extends State<ContactsScreen> {
           : ListContacts(
               contacts: contacts, add: _addContact, delete: _deleteContact),
       floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          SizedBox(width: 30),
           FloatingActionButton(
             onPressed: _addContact,
             tooltip: 'Add New Contact',
             child: Icon(Icons.person_add),
-          ),
-          SizedBox(width: 10),
-          FloatingActionButton(
-            onPressed: () {},
-            tooltip: 'Refresh List',
-            child: Icon(Icons.refresh),
-            backgroundColor: Colors.green,
           ),
         ],
       ),
