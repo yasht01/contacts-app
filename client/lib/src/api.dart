@@ -18,4 +18,9 @@ class ContactsApi {
     final response = await http.post(Uri.http("localhost:4049", "register"), body: {'name': name});
     return Contact.fromJson(jsonDecode(response.body.toString()));
   }
+
+  Future delete(String id) async {
+    final response = await http.delete(Uri.http("localhost:4049", "/delete/$id"));
+    return jsonDecode(response.body.toString());
+  }
 }

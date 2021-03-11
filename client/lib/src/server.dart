@@ -24,6 +24,7 @@ Future<void> start() async {
   server.post('/register', [
     (ServRequest req, ServResponse res) async {
       await collection.save(req.body);
+      print('POST Request');
       return res.json(
         await collection.findOne(where.eq('name', req.body['name'])),
       );
@@ -34,6 +35,7 @@ Future<void> start() async {
     (ServRequest req, ServResponse res) async {
       await collection
           .remove(where.eq('_id', ObjectId.fromHexString(req.params['id'])));
+      print('DELETE Request');
       return res.status(200).json({'nDeleted': 1});
     }
   ]);
