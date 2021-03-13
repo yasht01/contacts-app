@@ -32,8 +32,7 @@ void start() async {
 
   server.delete('/delete/:id', [
     (ServRequest req, ServResponse res) async {
-      await collection
-          .remove(where.eq('_id', ObjectId.fromHexString(req.params['id'])));
+      await collection.remove(where.eq('_id', req.params['id']));
       return res.status(200).json({'nDeleted': 1});
     }
   ]);

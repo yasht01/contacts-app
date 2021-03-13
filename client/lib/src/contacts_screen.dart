@@ -56,6 +56,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        backgroundColor: Colors.indigo,
       ),
       body: loading
           ? Center(child: CircularProgressIndicator())

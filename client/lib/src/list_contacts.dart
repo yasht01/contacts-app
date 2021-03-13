@@ -16,29 +16,26 @@ class ListContacts extends StatelessWidget {
             add: add,
           )
         : ListView(children: [
-            ...contacts
-                .map<Widget>((contact) => Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          radius: 30,
-                          child: Text(contact.initials,
-                              style: TextStyle(fontSize: 23)),
-                        ),
-                        title: Text(
-                          contact.name,
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        trailing: TextButton(
-                          child:
-                              Icon(Icons.delete, color: Colors.red, size: 30),
-                          onPressed: () {
-                            delete(contact.id);
-                          },
-                        ),
-                      ),
-                    ))
-                .toList(),
+            ...contacts.map<Widget>((contact) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child: Text(contact.initials,
+                          style: TextStyle(fontSize: 23)),
+                    ),
+                    title: Text(
+                      contact.name,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    trailing: TextButton(
+                      child: Icon(Icons.delete, color: Colors.red, size: 30),
+                      onPressed: () {
+                        delete(contact.id);
+                      },
+                    ),
+                  ),
+                )),
             SizedBox(height: 80),
           ]);
   }
