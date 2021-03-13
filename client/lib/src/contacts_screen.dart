@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
-import 'package:client/src/list_contacts.dart';
-import 'package:client/src/api.dart';
+import 'package:contacts/src/list_contacts.dart';
+import 'package:contacts/src/api.dart';
 import 'contact.dart';
 
 class ContactsScreen extends StatefulWidget {

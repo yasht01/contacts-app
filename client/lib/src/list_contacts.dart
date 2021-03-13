@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:client/src/no_contacts.dart';
+import 'package:contacts/src/no_contacts.dart';
 import 'contact.dart';
 
 class ListContacts extends StatelessWidget {
@@ -22,14 +22,16 @@ class ListContacts extends StatelessWidget {
                       child: ListTile(
                         leading: CircleAvatar(
                           radius: 30,
-                          child: Text(contact.initials, style: TextStyle(fontSize: 23)),
+                          child: Text(contact.initials,
+                              style: TextStyle(fontSize: 23)),
                         ),
                         title: Text(
                           contact.name,
                           style: TextStyle(fontSize: 20),
                         ),
                         trailing: TextButton(
-                          child: Icon(Icons.delete, color: Colors.red, size: 30),
+                          child:
+                              Icon(Icons.delete, color: Colors.red, size: 30),
                           onPressed: () {
                             delete(contact.id);
                           },

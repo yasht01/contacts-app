@@ -1,5 +1,5 @@
-name: client
-description: Contacts app frontend (Flutter)
+name: contacts
+description: Contacts app
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
